@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+
+body {
+    background: rgb(12,4,157);
+    background: linear-gradient(38deg, rgba(12,4,157,1) 0%, rgba(52,52,154,1) 43%, rgba(0,212,255,1) 100%);
+}
+
+.inputForm {
+    position: absolute;
+    top: 30%;
+    bottom: 43%;
+    right: 30%;
+    left: 30%;
+    background-color: rgba(115, 163, 231, 0.62);
+    border: solid 1px rgba(115, 163, 231, 0.62);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.inputForm button {
+    background-color: rgba(115, 163, 231, 0.31);
+    border: 1px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+}
+
+.inputForm button a {
+    text-decoration: none;
+    color: white;
+}
+
+.inputForm button a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.inputForm button a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.inputForm button a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.inputForm button a:active {
+    text-decoration: none;
+    color: white;
+}
+
+.inputPlace {
+    width: 300px;
+    margin-bottom: 10px;
+    background-color: rgba(115, 163, 231, 0.0);
+    height: 32px;
+    border: none;
+    border-bottom: 2px solid white;
+}
+
+.formFont {
+    text-align: center;
+    color: white;
+    font-family: 'Pacifico', cursive;
+    font-size: 30px;
+}
+
+.loginBtn {
+    margin-top: 10px;
+    width: 100px;
+    height: 45px;
+    background: rgb(12,4,157);
+    background: linear-gradient(225deg, rgba(12,4,157,1) 0%, rgba(52,52,154,1) 43%, rgba(0,212,255,1) 100%);
+    color: white;
+    font-size: 20px;
+    font-family: 'Pacifico', cursive;
+    border: none;
+    border-radius: 15px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+    color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+    color: white;
+}
+

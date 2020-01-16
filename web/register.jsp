@@ -9,10 +9,12 @@
 <html>
 <head>
     <title>Registracija</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
         <form action="register" method="post" >
+            <p class="formFont">Prijava v sistem</p>
             <input type="text" placeholder="Name" class="inputFields" name="name">
             <input type="text" placeholder="Surname" class="inputFields" name="surname">
             <input type="email" placeholder="Email" class="inputFields" name="email">

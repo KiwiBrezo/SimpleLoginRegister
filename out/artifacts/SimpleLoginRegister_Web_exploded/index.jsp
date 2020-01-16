@@ -10,14 +10,17 @@
 <html>
 <head>
     <title>Prijava</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="inputForm">
+        <p class="formFont">Prijava v sistem</p>
         <form action="login" method="post">
-            <input type="text" placeholder="Username" class="inputFields" name="username">
-            <input type="password" placeholder="Password" class="inputFields" name="password">
-            <input type="submit" value="Login">
+            <input class="inputPlace" type="text" placeholder="Username" class="inputFields" name="username">
+            <br>
+            <input class="inputPlace" type="password" placeholder="Password" class="inputFields" name="password">
+            <br>
+            <input class="loginBtn" type="submit" value="Login">
         </form>
         <button><a href="register">Register</a></button>
     </div>
