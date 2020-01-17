@@ -12,15 +12,15 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div>
+    <div class="inputRegisterForm">
         <form action="register" method="post" >
             <p class="formFont">Prijava v sistem</p>
-            <input type="text" placeholder="Name" class="inputFields" name="name">
-            <input type="text" placeholder="Surname" class="inputFields" name="surname">
-            <input type="email" placeholder="Email" class="inputFields" name="email">
-            <input type="text" placeholder="Username" class="inputFields" name="username">
-            <input type="password" placeholder="Password" class="inputFields" name="password">
-            <input type="submit" value="Register">
+            <input class="inputPlace" type="text" placeholder="Name" name="name">
+            <input class="inputPlace" type="text" placeholder="Surname" name="surname">
+            <input class="inputPlace" type="email" placeholder="Email" name="email">
+            <input class="inputPlace" type="text" placeholder="Username" name="username">
+            <input class="inputPlace" type="password" placeholder="Password" name="password">
+            <input class="registerBtn" type="submit" value="Register">
         </form>
         <button><a href="login">Login</a></button>
     </div>

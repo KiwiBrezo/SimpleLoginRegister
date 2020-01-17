@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="inputForm">
+    <div class="inputLoginForm">
         <p class="formFont">Prijava v sistem</p>
         <form action="login" method="post">
             <input class="inputPlace" type="text" placeholder="Username" class="inputFields" name="username">

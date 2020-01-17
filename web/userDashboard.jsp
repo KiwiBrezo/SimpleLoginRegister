@@ -9,13 +9,17 @@
 <html>
 <head>
     <title>Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>
-        Pozdravljen <%= request.getAttribute("name")%> <%= request.getAttribute("surname") %>!
-    </h1>
-    <h2>
-        Tvojo uporabnisko ime je: <%= request.getAttribute("username") %>.
-    </h2>
+    <div class="mainBody">
+        <h1>
+            Pozdravljen <%= request.getAttribute("name")%> <%= request.getAttribute("surname") %>!
+        </h1>
+        <h2>
+            Tvojo uporabnisko ime je: <%= request.getAttribute("username") %>.
+        </h2>
+        <button><a href="login">Odjavi me!</a></button>
+    </div>
 </body>
 </html>

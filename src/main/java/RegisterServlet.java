@@ -1,3 +1,5 @@
+import org.apache.commons.codec.digest.DigestUtils;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -5,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -24,6 +27,10 @@ public class RegisterServlet extends HttpServlet {
         String user_username = req.getParameter("username");
         String user_surname = req.getParameter("surname");
 
+        String passwHash = DigestUtils.sha256Hex(user_password);
+
+        System.out.println(passwHash);
+
         try {
             Connection conn = DatabaseConnector.getConn();
 
@@ -34,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
                 ps.setString(1, user_name);
                 ps.setString(2, user_surname);
                 ps.setString(3, user_username);
-                ps.setString(4, user_password);
+                ps.setString(4, passwHash);
                 ps.setString(5, user_email);
 
                 if(ps.executeUpdate() > 0)
@@ -44,8 +51,10 @@ public class RegisterServlet extends HttpServlet {
                     System.out.println("Failed in registration");
                 }
 
-                RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
-                requestDispatcher.forward(req, resp);
+                //RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
+                //requestDispatcher.forward(req, resp);
+
+                resp.sendRedirect(req.getContextPath() + "/login");
             } else {
                 return;
             }

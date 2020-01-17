@@ -41,11 +41,12 @@ public class LoginServlet extends HttpServlet {
                     req.setAttribute("username", username);
                     req.setAttribute("name", name);
                     req.setAttribute("surname", surname);
-                    req.getRequestDispatcher("userDashboard.jsp").forward(req, resp);
+                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/dashboard");
+                    dispatcher.forward(req, resp);
                 } else {
                     System.out.println("Podatki niso pravilni");
                     req.setAttribute("neuspesnaPrijava", true);
-                    req.getRequestDispatcher("index.jsp").forward(req, resp);
+                    resp.sendRedirect(req.getContextPath() + "/login");
                 }
             } else {
                 return;
