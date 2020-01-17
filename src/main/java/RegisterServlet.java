@@ -20,13 +20,13 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String user_name = req.getParameter("name");
-        String user_email = req.getParameter("email");
-        String user_password = req.getParameter("password");
-        String user_username = req.getParameter("username");
-        String user_surname = req.getParameter("surname");
+        String userName = req.getParameter("name");
+        String userEmail = req.getParameter("email");
+        String userPassword = req.getParameter("password");
+        String userUsername = req.getParameter("username");
+        String userSurname = req.getParameter("surname");
 
-        String passwHash = DigestUtils.sha256Hex(user_password);
+        String passwHash = DigestUtils.sha256Hex(userPassword);
 
         try {
             Connection conn = DatabaseConnector.getConn();
@@ -35,11 +35,11 @@ public class RegisterServlet extends HttpServlet {
                 PreparedStatement ps;
                 ps = conn.prepareStatement("INSERT INTO loginregister.users(\"name\", \"surname\", \"username\", \"password\", \"email\") VALUES(?, ?, ?, ?, ?)");
 
-                ps.setString(1, user_name);
-                ps.setString(2, user_surname);
-                ps.setString(3, user_username);
+                ps.setString(1, userName);
+                ps.setString(2, userSurname);
+                ps.setString(3, userUsername);
                 ps.setString(4, passwHash);
-                ps.setString(5, user_email);
+                ps.setString(5, userEmail);
 
                 if(ps.executeUpdate() > 0)
                 {
