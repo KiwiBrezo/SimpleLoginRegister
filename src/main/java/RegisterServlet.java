@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -28,8 +27,6 @@ public class RegisterServlet extends HttpServlet {
         String user_surname = req.getParameter("surname");
 
         String passwHash = DigestUtils.sha256Hex(user_password);
-
-        System.out.println(passwHash);
 
         try {
             Connection conn = DatabaseConnector.getConn();

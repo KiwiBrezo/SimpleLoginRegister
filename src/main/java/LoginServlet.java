@@ -1,3 +1,5 @@
+import org.apache.commons.codec.digest.DigestUtils;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,8 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+
+        String passwHash = DigestUtils.sha256Hex(password);
 
         System.out.println("(POST)Poslani podatki so: " + username + " " + password);
 
@@ -36,7 +40,7 @@ public class LoginServlet extends HttpServlet {
                     surname = resultOfQuery.getString("surname");
                 }
 
-                if (passw.compareTo(password) == 0) {
+                if (passw.compareTo(passwHash) == 0) {
                     System.out.println("Podatki so pravilni");
                     req.setAttribute("username", username);
                     req.setAttribute("name", name);
