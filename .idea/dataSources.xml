@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="JavaSimpleLoginRegister@localhost" uuid="d0d61c74-806c-4578-9694-3cccf685fc4b">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/JavaSimpleLoginRegister</jdbc-url>
+    </data-source>
+  </component>
+</project>

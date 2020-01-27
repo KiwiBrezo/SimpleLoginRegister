@@ -11,7 +11,7 @@
 <head>
     <title>Prijava</title>
     <style>
-        <%@include file="style.css"%>
+        <%@include file="syles/style.css"%>
     </style>
 </head>
 <body>
@@ -36,7 +36,7 @@
 
     <div class="inputLoginForm">
         <p class="formFont">Prijava v sistem</p>
-        <form action="login" method="post">
+        <form action="login" method="post" autocomplete="off">
             <input class="inputPlace" type="text" placeholder="Username" class="inputFields" name="username">
             <br>
             <input class="inputPlace" type="password" placeholder="Password" class="inputFields" name="password">

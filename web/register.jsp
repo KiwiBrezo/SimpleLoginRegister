@@ -11,7 +11,7 @@
 <head>
     <title>Registracija</title>
     <style>
-        <%@include file="style.css"%>
+        <%@include file="syles/style.css"%>
     </style>
 </head>
 <body>
@@ -35,13 +35,14 @@
     </c:if>
 
     <div class="inputRegisterForm">
-        <form action="register" method="post" >
+        <form action="register" method="post" autocomplete="off">
             <p class="formFont">Prijava v sistem</p>
             <input class="inputPlace" type="text" placeholder="Name" name="name">
             <input class="inputPlace" type="text" placeholder="Surname" name="surname">
             <input class="inputPlace" type="email" placeholder="Email" name="email">
             <input class="inputPlace" type="text" placeholder="Username" name="username">
             <input class="inputPlace" type="password" placeholder="Password" name="password">
+            <br>
             <input class="registerBtn" type="submit" value="Register">
         </form>
         <button><a href="login">Login</a></button>

@@ -44,11 +44,12 @@ public class LoginServlet extends HttpServlet {
 
                 if (passw.compareTo(passwHash) == 0) {
                     System.out.println("Podatki so pravilni");
-                    req.setAttribute("username", username);
-                    req.setAttribute("name", name);
-                    req.setAttribute("surname", surname);
-                    RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/dashboard");
-                    dispatcher.forward(req, resp);
+
+                    session.setAttribute("username", username);
+                    session.setAttribute("name", name);
+                    session.setAttribute("surname", surname);
+
+                    resp.sendRedirect(req.getContextPath() + "/dashboard");
                 } else {
                     System.out.println("Podatki niso pravilni");
 
@@ -61,8 +62,6 @@ public class LoginServlet extends HttpServlet {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } catch (ServletException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

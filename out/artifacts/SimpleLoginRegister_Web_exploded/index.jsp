@@ -4,9 +4,6 @@
   Date: 14/01/2020
   Time: 07:43
   To change this template use File | Settings | File Templates.
-  <c:if test="${status == 'succ'}">
-            <p class="succMsg"> <%= session.getAttribute("massage") %> </p>
-        </c:if>
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -14,7 +11,7 @@
 <head>
     <title>Prijava</title>
     <style>
-        <%@include file="style.css"%>
+        <%@include file="syles/style.css"%>
     </style>
 </head>
 <body>
@@ -39,7 +36,7 @@
 
     <div class="inputLoginForm">
         <p class="formFont">Prijava v sistem</p>
-        <form action="login" method="post">
+        <form action="login" method="post" autocomplete="off">
             <input class="inputPlace" type="text" placeholder="Username" class="inputFields" name="username">
             <br>
             <input class="inputPlace" type="password" placeholder="Password" class="inputFields" name="password">

@@ -9,17 +9,81 @@
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="syles/style.css">
 </head>
-<body>
+<body class="showWindow">
     <div class="mainBody">
         <h1>
-            Pozdravljen <%= request.getAttribute("name")%> <%= request.getAttribute("surname") %>!
+            <div>
+                Pozdravljen <%= session.getAttribute("name")%> <%= session.getAttribute("surname") %>!
+            </div>
         </h1>
-        <h2>
-            Tvojo uporabnisko ime je: <%= request.getAttribute("username") %>.
-        </h2>
-        <button><a href="login">Odjavi me!</a></button>
+
+        <div class="addNewJobForm">
+            <button onclick="logOut()">
+                <a href="login">Odjavi me!</a>
+            </button>
+            <form action="addNew" autocomplete="off">
+                <input class="inputPlace" type="text" placeholder="Naziv opravila">
+                <br>
+                <input class="inputPlace" type="date">
+                <input class="inputPlace" type="time">
+                <br>
+                <textarea class="inputPlaceBigText" placeholder="Opis opravila"></textarea>
+                <br>
+                <input class="addBtn" type="submit" value="Dodaj opravilo">
+            </form>
+        </div>
+
+        <div class="showJobs">
+            <div class="jobDesc">
+
+            </div>
+
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+            <div class="jobDesc">
+
+            </div>
+        </div>
+
     </div>
 </body>
+<script>
+    function logOut() {
+        <% session.invalidate(); %>
+        console.log("Odjava uspesna");
+    }
+</script>
 </html>
