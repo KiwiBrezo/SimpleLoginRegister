@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 @WebServlet(name = "register-name", urlPatterns = {"/register"})
 public class RegisterServlet extends HttpServlet {
@@ -33,6 +34,23 @@ public class RegisterServlet extends HttpServlet {
 
             if(conn != null) {
                 PreparedStatement ps;
+
+                ps = conn.prepareStatement("SELECT EXISTS(SELECT * FROM  loginregister.users WHERE username = ? OR email = ?)");
+
+                ps.setString(1, userUsername);
+                ps.setString(2, userEmail);
+
+                ResultSet resultOfQuery = ps.executeQuery();
+
+                while (resultOfQuery.next()) {
+                    if (resultOfQuery.getBoolean("exists")) {
+                        System.out.println("Failed in registration");
+                        System.out.println("Username or email already in use");
+                        resp.sendRedirect(req.getContextPath() + "/login");
+                        return;
+                    }
+                }
+
                 ps = conn.prepareStatement("INSERT INTO loginregister.users(\"name\", \"surname\", \"username\", \"password\", \"email\") VALUES(?, ?, ?, ?, ?)");
 
                 ps.setString(1, userName);
