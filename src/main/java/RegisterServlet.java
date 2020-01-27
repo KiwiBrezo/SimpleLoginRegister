@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -33,6 +34,7 @@ public class RegisterServlet extends HttpServlet {
             Connection conn = DatabaseConnector.getConn();
 
             if(conn != null) {
+                HttpSession session = req.getSession(false);
                 PreparedStatement ps;
 
                 ps = conn.prepareStatement("SELECT EXISTS(SELECT * FROM  loginregister.users WHERE username = ? OR email = ?)");
@@ -46,7 +48,11 @@ public class RegisterServlet extends HttpServlet {
                     if (resultOfQuery.getBoolean("exists")) {
                         System.out.println("Failed in registration");
                         System.out.println("Username or email already in use");
-                        resp.sendRedirect(req.getContextPath() + "/login");
+
+                        session.setAttribute("status", "err");
+                        session.setAttribute("massage", "Podani username ali email že obstaja!");
+                        resp.sendRedirect(req.getContextPath() + "/register");
+
                         return;
                     }
                 }
@@ -62,14 +68,17 @@ public class RegisterServlet extends HttpServlet {
                 if(ps.executeUpdate() > 0)
                 {
                     System.out.println("You are sucessfully registered");
+
+                    session.setAttribute("status", "succ");
+                    session.setAttribute("massage", "Registracija uspesna, zdaj se lahko prijavite!");
+                    resp.sendRedirect(req.getContextPath() + "/login");
                 }else{
                     System.out.println("Failed in registration");
+
+                    session.setAttribute("status", "err");
+                    session.setAttribute("massage", "Registracija neuspesna!");
+                    resp.sendRedirect(req.getContextPath() + "/register");
                 }
-
-                //RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
-                //requestDispatcher.forward(req, resp);
-
-                resp.sendRedirect(req.getContextPath() + "/login");
             } else {
                 return;
             }

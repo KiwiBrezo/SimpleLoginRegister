@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.*;
 
@@ -23,6 +24,7 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Connection conn = DatabaseConnector.getConn();
+            HttpSession session = req.getSession(false);
 
             if(conn != null) {
                 PreparedStatement statement = conn.prepareStatement("SELECT password, name, surname FROM loginregister.users WHERE username = ?");
@@ -49,7 +51,9 @@ public class LoginServlet extends HttpServlet {
                     dispatcher.forward(req, resp);
                 } else {
                     System.out.println("Podatki niso pravilni");
-                    req.setAttribute("neuspesnaPrijava", true);
+
+                    session.setAttribute("status", "err");
+                    session.setAttribute("massage", "Prijava neuspesna, nepravilni podatki!");
                     resp.sendRedirect(req.getContextPath() + "/login");
                 }
             } else {

@@ -6,12 +6,34 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Registracija</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        <%@include file="style.css"%>
+    </style>
 </head>
 <body>
+    <c:if test="${status != null && massage != null}">
+        <c:choose>
+            <c:when test="${status == 'succ'}">
+                <p class="succMsg"> <%= session.getAttribute("massage") %> </p>
+            </c:when>
+            <c:when test="${status == 'err'}">
+                <p class="errMsg"> <%= session.getAttribute("massage") %> </p>
+            </c:when>
+            <c:otherwise>
+                <!-- just nofing -->
+            </c:otherwise>
+        </c:choose>
+
+        <%
+            session.removeAttribute("status");
+            session.removeAttribute("massage");
+        %>
+    </c:if>
+
     <div class="inputRegisterForm">
         <form action="register" method="post" >
             <p class="formFont">Prijava v sistem</p>

@@ -133,6 +133,35 @@ body {
     border-radius: 15px;
 }
 
+.succMsg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    background-color: limegreen;
+    color: white;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
+.errMsg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    background-color: red;
+    vertical-align: middle;
+    color: white;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
 .inputPlace:focus {
     outline: none;
 }
