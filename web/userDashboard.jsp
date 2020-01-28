@@ -23,14 +23,17 @@
             <button onclick="logOut()">
                 <a href="login">Odjavi me!</a>
             </button>
-            <form action="addNew" autocomplete="off">
-                <input class="inputPlace" type="text" placeholder="Naziv opravila">
+            <form action="addNew" method="post" autocomplete="off">
+                <input class="inputPlace" type="text" placeholder="Naziv opravila" name="naziv">
                 <br>
-                <input class="inputPlace" type="date">
-                <input class="inputPlace" type="time">
+                <input class="inputPlace" type="date" name="datumZakljucka">
+                <input class="inputPlace" type="time" name="casZakljucka">
                 <br>
-                <textarea class="inputPlaceBigText" placeholder="Opis opravila"></textarea>
+                <textarea class="inputPlaceBigText" placeholder="Opis opravila" name="opis"></textarea>
                 <br>
+                <input type="hidden" name="userId" value="<%= session.getAttribute("userId") %>">
+                <input type="hidden" name="userId" value="<%= session.getAttribute("name") %>">
+                <input type="hidden" name="userId" value="<%= session.getAttribute("surname") %>">
                 <input class="addBtn" type="submit" value="Dodaj opravilo">
             </form>
         </div>

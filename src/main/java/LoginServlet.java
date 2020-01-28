@@ -24,10 +24,10 @@ public class LoginServlet extends HttpServlet {
 
         try {
             Connection conn = DatabaseConnector.getConn();
-            HttpSession session = req.getSession(false);
+            HttpSession session = req.getSession();
 
             if(conn != null) {
-                PreparedStatement statement = conn.prepareStatement("SELECT password, name, surname FROM loginregister.users WHERE username = ?");
+                PreparedStatement statement = conn.prepareStatement("SELECT user_id, password, name, surname FROM loginregister.users WHERE username = ?");
 
                 statement.setString(1, username);
 
@@ -36,10 +36,12 @@ public class LoginServlet extends HttpServlet {
                 String passw = "";
                 String name = "";
                 String surname = "";
+                int user_id = -1;
                 while(resultOfQuery.next()) {
                     passw = resultOfQuery.getString("password");
                     name = resultOfQuery.getString("name");
                     surname = resultOfQuery.getString("surname");
+                    user_id = resultOfQuery.getInt("user_id");
                 }
 
                 if (passw.compareTo(passwHash) == 0) {
@@ -48,6 +50,7 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("username", username);
                     session.setAttribute("name", name);
                     session.setAttribute("surname", surname);
+                    session.setAttribute("userId", user_id);
 
                     resp.sendRedirect(req.getContextPath() + "/dashboard");
                 } else {
