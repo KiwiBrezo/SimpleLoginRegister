@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Breznar
@@ -6,16 +8,43 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    String user_id = "/", username = "/", name = "/", surname = "/";
+    Cookie cookies[] = request.getCookies();
+    if (cookies != null) {
+        for (Cookie c : cookies) {
+            switch (c.getName()) {
+                case "userId":
+                    user_id = c.getValue();
+                    break;
+                case "username":
+                    username = c.getValue();
+                    break;
+                case "name":
+                    name = c.getValue();
+                    break;
+                case "surname":
+                    surname = c.getValue();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+%>
 <html>
 <head>
     <title>Dashboard</title>
-    <link rel="stylesheet" href="syles/style.css">
+    <style>
+        <%@include file="syles/style.css"%>
+    </style>
 </head>
 <body class="showWindow">
     <div class="mainBody">
         <h1>
             <div>
-                Pozdravljen <%= session.getAttribute("name")%> <%= session.getAttribute("surname") %>!
+                Pozdravljen <%= name %> <%= surname %>!
             </div>
         </h1>
 
@@ -31,62 +60,37 @@
                 <br>
                 <textarea class="inputPlaceBigText" placeholder="Opis opravila" name="opis"></textarea>
                 <br>
-                <input type="hidden" name="userId" value="<%= session.getAttribute("userId") %>">
-                <input type="hidden" name="userId" value="<%= session.getAttribute("name") %>">
-                <input type="hidden" name="userId" value="<%= session.getAttribute("surname") %>">
+                <input type="hidden" name="userId" value="<%= user_id %>">
                 <input class="addBtn" type="submit" value="Dodaj opravilo">
             </form>
         </div>
 
         <div class="showJobs">
-            <div class="jobDesc">
-
-            </div>
-
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
-            <div class="jobDesc">
-
-            </div>
+            <c:forEach items="${jobs}" var="job">
+                <div class="jobDesc">
+                    <p>${job}</p>
+                </div>
+            </c:forEach>
         </div>
 
     </div>
 </body>
 <script>
     function logOut() {
-        <% session.invalidate(); %>
+        <%--
+        //session.invalidate();
+        Cookie cokies[] = request.getCookies();
+
+        if (cokies != null ) {
+            for (Cookie c : cokies) {
+                c.setValue("");
+                c.setPath("/");
+                c.setMaxAge(0);
+                response.addCookie(c);
+            }
+        }
+        --%>
         console.log("Odjava uspesna");
-    }
+        }
 </script>
 </html>

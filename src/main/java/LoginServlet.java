@@ -3,10 +3,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.*;
 
@@ -47,10 +44,19 @@ public class LoginServlet extends HttpServlet {
                 if (passw.compareTo(passwHash) == 0) {
                     System.out.println("Podatki so pravilni");
 
-                    session.setAttribute("username", username);
-                    session.setAttribute("name", name);
-                    session.setAttribute("surname", surname);
-                    session.setAttribute("userId", user_id);
+                    Cookie c1 = new Cookie("userId", Integer.toString(user_id));
+                    c1.setMaxAge(5 * 60);
+                    Cookie c2 = new Cookie("username", username);
+                    c2.setMaxAge(5 * 60);
+                    Cookie c3 = new Cookie("name", name);
+                    c3.setMaxAge(5 * 60);
+                    Cookie c4 = new Cookie("surname", surname);
+                    c4.setMaxAge(5 * 60);
+
+                    resp.addCookie(c1);
+                    resp.addCookie(c2);
+                    resp.addCookie(c3);
+                    resp.addCookie(c4);
 
                     resp.sendRedirect(req.getContextPath() + "/dashboard");
                 } else {
