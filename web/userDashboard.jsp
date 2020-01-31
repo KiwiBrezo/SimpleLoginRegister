@@ -50,47 +50,56 @@
 
         <div class="addNewJobForm">
             <button onclick="logOut()">
-                <a href="login">Odjavi me!</a>
+                <a href="logout">Odjavi me!</a>
             </button>
-            <form action="addNew" method="post" autocomplete="off">
-                <input class="inputPlace" type="text" placeholder="Naziv opravila" name="naziv">
+            <form action="addNew" method="post" autocomplete="off" name="JobForm">
+                <input class="inputPlace" id="Naziv" type="text" placeholder="Naziv opravila" name="naziv">
                 <br>
-                <input class="inputPlace" type="date" name="datumZakljucka">
-                <input class="inputPlace" type="time" name="casZakljucka">
+                <input class="inputPlace" id="Datum" type="date" name="datumZakljucka">
+                <input class="inputPlace" id="Cas" type="time" name="casZakljucka">
                 <br>
                 <textarea class="inputPlaceBigText" placeholder="Opis opravila" name="opis"></textarea>
                 <br>
                 <input type="hidden" name="userId" value="<%= user_id %>">
-                <input class="addBtn" type="submit" value="Dodaj opravilo">
+                <input class="addBtn" onclick="return validateJobForm()" type="submit" value="Dodaj opravilo">
             </form>
         </div>
 
         <div class="showJobs">
+            <h3>Neopravljene:</h3>
             <c:forEach items="${jobs}" var="job">
-                <div class="jobDesc">
-                    <p>${job}</p>
-                </div>
+                <c:if test="${job.getJobDone() == false}">
+                    <div class="jobDesc">
+                        <span>${job.getTitle()}</span><br>
+                        <span>${job.getShortComment()}</span><br>
+                        <span>Do kdaj: ${job.getDate()}, do katere ure: ${job.getTime()}</span><br>
+                        <button class="detailsBtn" onclick="showDetails('${job.getComment()}', '${job.getTitle()}', '${job.getDate()}', '${job.getTime()}')">Podrobnosti opravila</button>
+                        <button class="completeBtn"><a href="finishJob?id=${job.getJobID()}">Končaj opravilo</a></button>
+                        <button class="removeBtn"><a href="removeJob?id=${job.getJobID()}">Odstrani opravilo</a></button>
+                    </div>
+                </c:if>
+            </c:forEach>
+        </div>
+
+        <div class="showJobsDone">
+            <h3>Opravljene:</h3>
+            <c:forEach items="${jobs}" var="job">
+                <c:if test="${job.getJobDone() == true}">
+                    <div class="jobDesc">
+                        <span>${job.getTitle()}</span><br>
+                        <span>${job.getShortComment()}</span><br>
+                        <span>Do kdaj: ${job.getDate()}, do katere ure: ${job.getTime()}</span><br>
+                        <button class="detailsBtn" onclick="showDetails('${job.getComment()}', '${job.getTitle()}', '${job.getDate()}', '${job.getTime()}')">Podrobnosti opravila</button>
+                        <button class="notCompleteBtn"><a href="notFinishJob?id=${job.getJobID()}">Označi kot neopravljeno</a></button>
+                        <button class="removeBtn"><a href="removeJob?id=${job.getJobID()}">Odstrani opravilo</a></button>
+                    </div>
+                </c:if>
             </c:forEach>
         </div>
 
     </div>
 </body>
 <script>
-    function logOut() {
-        <%--
-        //session.invalidate();
-        Cookie cokies[] = request.getCookies();
-
-        if (cokies != null ) {
-            for (Cookie c : cokies) {
-                c.setValue("");
-                c.setPath("/");
-                c.setMaxAge(0);
-                response.addCookie(c);
-            }
-        }
-        --%>
-        console.log("Odjava uspesna");
-        }
+    <%@include file="JS/script.js"%>
 </script>
 </html>

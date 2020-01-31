@@ -35,17 +35,20 @@
     </c:if>
 
     <div class="inputRegisterForm">
-        <form action="register" method="post" autocomplete="off">
+        <form action="register" method="post" autocomplete="off" name="RForm">
             <p class="formFont">Prijava v sistem</p>
-            <input class="inputPlace" type="text" placeholder="Name" name="name">
-            <input class="inputPlace" type="text" placeholder="Surname" name="surname">
-            <input class="inputPlace" type="email" placeholder="Email" name="email">
-            <input class="inputPlace" type="text" placeholder="Username" name="username">
-            <input class="inputPlace" type="password" placeholder="Password" name="password">
+            <input class="inputPlace" id="Name" type="text" placeholder="Name" name="name">
+            <input class="inputPlace" id="SurName" type="text" placeholder="Surname" name="surname">
+            <input class="inputPlace" id="Email" type="email" placeholder="Email" name="email" onkeyup="validateIfEmail()">
+            <input class="inputPlace" id="UserName" type="text" placeholder="Username" name="username">
+            <input class="inputPlace" id="Password" type="password" placeholder="Password" name="password">
             <br>
-            <input class="registerBtn" type="submit" value="Register">
+            <input class="registerBtn" onclick="return validateRegisterForm()" type="submit" value="Register">
         </form>
         <button><a href="login">Login</a></button>
     </div>
 </body>
+<script>
+    <%@include file="JS/script.js"%>
+</script>
 </html>

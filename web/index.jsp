@@ -36,15 +36,18 @@
 
     <div class="inputLoginForm">
         <p class="formFont">Prijava v sistem</p>
-        <form action="login" method="post" autocomplete="off">
-            <input class="inputPlace" type="text" placeholder="Username" class="inputFields" name="username">
+        <form action="login" method="post" autocomplete="off" name="LoginForm">
+            <input class="inputPlace" id="userName" type="text" placeholder="Username" class="inputFields" name="username">
             <br>
-            <input class="inputPlace" type="password" placeholder="Password" class="inputFields" name="password">
+            <input class="inputPlace" id="passw" type="password" placeholder="Password" class="inputFields" name="password">
             <br>
-            <input class="loginBtn" type="submit" value="Login">
+            <input class="loginBtn" onclick="return validateLoginForm()" type="submit" value="Login">
         </form>
         <button><a href="register">Register</a></button>
     </div>
 
 </body>
+<script>
+    <%@include file="JS/script.js"%>
+</script>
 </html>

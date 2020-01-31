@@ -49,6 +49,7 @@ public class DashboardServlet extends HttpServlet {
                         job.userId = userId;
                         job.dateDue = resultOfQuery.getDate("time_due_date");
                         job.timeDue = resultOfQuery.getTime("time_due_time");
+                        job.jobDone = resultOfQuery.getBoolean("job_done");
                         jobs.add(job);
                     }
 

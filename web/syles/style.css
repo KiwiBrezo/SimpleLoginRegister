@@ -48,14 +48,37 @@ body {
 .showJobs {
     border: 2px solid white;
     border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.showJobsDone {
+    border: 2px solid white;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+.showJobsDone span {
+    text-decoration: line-through;
+}
+
+.showJobs h3 {
+    margin-left: 10px;
+    color: red;
+}
+
+.showJobsDone h3 {
+    margin-left: 10px;
+    color: lime;
 }
 
 .jobDesc {
+    border: 3px solid white;
     border-radius: 15px;
+    background: rgba(0, 0, 0, 0.0);
     margin: 5px;
-    background-color: white;
-    color: black;
-    height: 80px;
+    color: white;
+    height: 95px;
+    padding-top: 8px;
+    padding-left: 10px;
 }
 
 .mainBody h1 {
@@ -243,6 +266,59 @@ body {
 }
 
 .inputRegisterForm button a:active {
+    text-decoration: none;
+    color: white;
+}
+
+.detailsBtn {
+    border: 2px solid dodgerblue;
+    border-radius: 10px;
+    color: white;
+}
+
+.removeBtn {
+    border: 2px solid red;
+    border-radius: 10px;
+}
+
+.completeBtn {
+    border: 2px solid lime;
+    border-radius: 10px;
+}
+
+.notCompleteBtn {
+    border: 2px solid orangered;
+    border-radius: 10px;
+}
+
+.jobDesc button {
+    margin-left: 10px;
+    margin-top: 10px;
+    background: rgba(0, 0, 0, 0.0);
+}
+
+.jobDesc button a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.jobDesc button a:link {
+    text-decoration: none;
+    color: white;
+}
+
+.jobDesc button a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.jobDesc button a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.jobDesc button a:active {
     text-decoration: none;
     color: white;
 }
