@@ -54,16 +54,19 @@ public class DashboardServlet extends HttpServlet {
                     }
 
                     req.setAttribute("jobs", jobs);
+                    RequestDispatcher requestDispatcher = req.getRequestDispatcher("userDashboard.jsp");
+                    requestDispatcher.forward(req, resp);
                 } else {
+                    resp.sendRedirect("login");
+                    System.out.println("Ni povezave z bazo...");
                     return;
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+        } else {
+            resp.sendRedirect("login");
         }
-
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("userDashboard.jsp");
-        requestDispatcher.forward(req, resp);
     }
 
     @Override

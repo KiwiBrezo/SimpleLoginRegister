@@ -1,22 +1,20 @@
-function logOut() {
-    console.log("Odjava uspesna");
-}
-
 function showDetails(comment, title, date, time) {
-    var myWindow = window.open("", "MsgWindow", "width=400,height=200");
+    let myWindow = window.open("", "MsgWindow", "width=400,height=200");
     myWindow.document.write("<h2>" + title + "</h2>");
+    myWindow.document.write("<hr>");
     myWindow.document.write("<p> Do kdaj: " + date + ", do katere ure: " + time + "</p>");
+    myWindow.document.write("<hr>");
     myWindow.document.write("<h3>" + comment + "</h3>");
 }
 
 function validateJobForm() {
-    var naslov = document.forms["JobForm"].elements["naziv"].value;
-    var datum = document.forms["JobForm"].elements["datumZakljucka"].value;
-    var cas = document.forms["JobForm"].elements["casZakljucka"].value;
+    let naslov = document.forms["JobForm"].elements["naziv"].value;
+    let datum = document.forms["JobForm"].elements["datumZakljucka"].value;
+    let cas = document.forms["JobForm"].elements["casZakljucka"].value;
 
-    var hasNaslov = true;
-    var hasDatum = true;
-    var hasCas = true;
+    let hasNaslov = true;
+    let hasDatum = true;
+    let hasCas = true;
 
     if (naslov == null || naslov == "") {
         document.getElementById("Naziv").style.borderBottomColor = "red";
@@ -45,11 +43,11 @@ function validateJobForm() {
 }
 
 function validateLoginForm() {
-    var username = document.forms["LoginForm"].elements["username"].value;
-    var passw = document.forms["LoginForm"].elements["password"].value;
+    let username = document.forms["LoginForm"].elements["username"].value;
+    let passw = document.forms["LoginForm"].elements["password"].value;
 
-    var hasUsername = true;
-    var hasPassword = true;
+    let hasUsername = true;
+    let hasPassword = true;
 
     if (username == null || username == "") {
         document.getElementById("userName").style.borderBottomColor = "red";
@@ -68,17 +66,17 @@ function validateLoginForm() {
 }
 
 function validateRegisterForm() {
-    var name = document.forms["RForm"].elements["name"].value;
-    var surname = document.forms["RForm"].elements["surname"].value;
-    var email = document.forms["RForm"].elements["email"].value;
-    var username = document.forms["RForm"].elements["username"].value;
-    var passw = document.forms["RForm"].elements["password"].value;
+    let name = document.forms["RForm"].elements["name"].value;
+    let surname = document.forms["RForm"].elements["surname"].value;
+    let email = document.forms["RForm"].elements["email"].value;
+    let username = document.forms["RForm"].elements["username"].value;
+    let passw = document.forms["RForm"].elements["password"].value;
 
-    var hasUsername = true;
-    var hasName = true;
-    var hasSurname = true;
-    var hasEmail = true;
-    var hasPassword = true;
+    let hasUsername = true;
+    let hasName = true;
+    let hasSurname = true;
+    let hasEmail = true;
+    let hasPassword = true;
 
     if (username == null || username == "") {
         document.getElementById("UserName").style.borderBottomColor = "red";
@@ -115,7 +113,7 @@ function validateRegisterForm() {
 }
 
 function validateIfEmail() {
-    var email = document.forms["RForm"].elements["email"].value;
+    let email = document.forms["RForm"].elements["email"].value;
 
     if (!email.includes("@")) {
         document.getElementById("Email").style.borderBottomColor = "red";

@@ -10,9 +10,7 @@ public class JobClass {
     public boolean jobDone;
     public int userId;
 
-    public String getJobID() {
-        return Integer.toString(this.jobId);
-    }
+    public String getJobID() { return Integer.toString(this.jobId); }
 
     public String getTitle() {
         return this.title;
@@ -34,9 +32,7 @@ public class JobClass {
         return this.timeDue.toString();
     }
 
-    public boolean getJobDone() {
-        return this.jobDone;
-    }
+    public boolean getJobDone() { return this.jobDone; }
 
     public String getUserID() {
         return Integer.toString(this.userId);

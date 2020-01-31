@@ -17,8 +17,6 @@ public class LoginServlet extends HttpServlet {
 
         String passwHash = DigestUtils.sha256Hex(password);
 
-        System.out.println("(POST)Poslani podatki so: " + username + " " + passwHash);
-
         try {
             Connection conn = DatabaseConnector.getConn();
             HttpSession session = req.getSession();

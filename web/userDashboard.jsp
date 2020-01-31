@@ -1,5 +1,3 @@
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Breznar
@@ -35,7 +33,7 @@
 %>
 <html>
 <head>
-    <title>Dashboard</title>
+    <title>Users Dashboard</title>
     <style>
         <%@include file="syles/style.css"%>
     </style>
@@ -49,7 +47,7 @@
         </h1>
 
         <div class="addNewJobForm">
-            <button onclick="logOut()">
+            <button>
                 <a href="logout">Odjavi me!</a>
             </button>
             <form action="addNew" method="post" autocomplete="off" name="JobForm">

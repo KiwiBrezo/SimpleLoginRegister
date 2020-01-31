@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Registracija</title>
+    <title>Registration</title>
     <style>
         <%@include file="syles/style.css"%>
     </style>
